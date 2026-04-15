@@ -9,6 +9,7 @@ namespace Commande_distance_MBE_Client
     {
         static void Main(string[] args)
         {
+            MBEClient Client = new MBEClient("192.168.56.10", 9000);
         }
     }
 }
