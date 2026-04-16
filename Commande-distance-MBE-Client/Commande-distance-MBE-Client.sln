@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commande-distance-MBE-Client", "Commande-distance-MBE-Client\Commande-distance-MBE-Client.csproj", "{46E54E78-66A8-4A67-AFBB-D7E36DDF6FE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commande-distance-MBE-Client", "Commande-distance-MBE-Client\Commande-distance-MBE-Client.csproj", "{9A200EE8-3FB5-4C36-BE0A-0732C0EC1AF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{46E54E78-66A8-4A67-AFBB-D7E36DDF6FE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46E54E78-66A8-4A67-AFBB-D7E36DDF6FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46E54E78-66A8-4A67-AFBB-D7E36DDF6FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46E54E78-66A8-4A67-AFBB-D7E36DDF6FE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A200EE8-3FB5-4C36-BE0A-0732C0EC1AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A200EE8-3FB5-4C36-BE0A-0732C0EC1AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A200EE8-3FB5-4C36-BE0A-0732C0EC1AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A200EE8-3FB5-4C36-BE0A-0732C0EC1AF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F18A5FD0-3FEA-4A8E-97C3-3C5A4890E75D}
+		SolutionGuid = {733E57C4-E9F9-4378-8F15-ED0E3E4FC220}
 	EndGlobalSection
 EndGlobal
