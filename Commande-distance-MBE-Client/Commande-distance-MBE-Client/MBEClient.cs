@@ -11,22 +11,22 @@ namespace Commande_distance_MBE_Client
         private NetworkStream stream;
         private TcpClient client;
         private byte[] buffer = new byte[1024];
+        public bool IsConnected { get; private set; }
         public MBEClient(string IP, int Port)
         {
-            TcpClient client = new TcpClient();
+            client = new TcpClient();
 
             try
             {
                 client.Connect(IP, Port);
+                stream = client.GetStream();
+                IsConnected = true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Impossible to connect : " + ex.Message);
-                Console.ReadKey();
-                return;
+                IsConnected = false;
             }
-            stream = client.GetStream();
-            Console.WriteLine("Connected");
+            
         }
 
         public bool SendMessage(string Message)
@@ -45,15 +45,22 @@ namespace Commande_distance_MBE_Client
 
         public string ReadResponse()
         {
-            int bytesRead = stream.Read(buffer, 0, buffer.Length);
-            string reponse = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-            return reponse;
+            try
+            {
+                int bytesRead = stream.Read(buffer, 0, buffer.Length);
+                if (bytesRead == 0) return null;
+                return Encoding.UTF8.GetString(buffer, 0, bytesRead);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public void Close()
         {
-            stream.Close();
-            client.Close();
+            if (stream != null) stream.Close();
+            if (client != null) client.Close();
         }
 
     }
