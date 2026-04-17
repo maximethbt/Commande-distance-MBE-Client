@@ -34,6 +34,11 @@
             this.button_Send = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label_Status = new System.Windows.Forms.Label();
+            this.textBox_IP = new System.Windows.Forms.TextBox();
+            this.textBox_Port = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button_Connect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -55,14 +60,14 @@
             // 
             // textBox_Message
             // 
-            this.textBox_Message.Location = new System.Drawing.Point(116, 117);
+            this.textBox_Message.Location = new System.Drawing.Point(125, 87);
             this.textBox_Message.Name = "textBox_Message";
             this.textBox_Message.Size = new System.Drawing.Size(100, 22);
             this.textBox_Message.TabIndex = 2;
             // 
             // button_Send
             // 
-            this.button_Send.Location = new System.Drawing.Point(116, 166);
+            this.button_Send.Location = new System.Drawing.Point(125, 136);
             this.button_Send.Name = "button_Send";
             this.button_Send.Size = new System.Drawing.Size(75, 23);
             this.button_Send.TabIndex = 3;
@@ -87,11 +92,58 @@
             this.label_Status.Size = new System.Drawing.Size(0, 16);
             this.label_Status.TabIndex = 5;
             // 
+            // textBox_IP
+            // 
+            this.textBox_IP.Location = new System.Drawing.Point(12, 238);
+            this.textBox_IP.Name = "textBox_IP";
+            this.textBox_IP.Size = new System.Drawing.Size(100, 22);
+            this.textBox_IP.TabIndex = 6;
+            // 
+            // textBox_Port
+            // 
+            this.textBox_Port.Location = new System.Drawing.Point(12, 303);
+            this.textBox_Port.Name = "textBox_Port";
+            this.textBox_Port.Size = new System.Drawing.Size(100, 22);
+            this.textBox_Port.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 219);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(19, 16);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "IP";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 284);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 16);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Port";
+            // 
+            // button_Connect
+            // 
+            this.button_Connect.Location = new System.Drawing.Point(25, 353);
+            this.button_Connect.Name = "button_Connect";
+            this.button_Connect.Size = new System.Drawing.Size(75, 23);
+            this.button_Connect.TabIndex = 10;
+            this.button_Connect.Text = "Connect";
+            this.button_Connect.UseVisualStyleBackColor = true;
+            this.button_Connect.Click += new System.EventHandler(this.button_Connect_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_Connect);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox_Port);
+            this.Controls.Add(this.textBox_IP);
             this.Controls.Add(this.label_Status);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button_Send);
@@ -114,6 +166,11 @@
         private System.Windows.Forms.Button button_Send;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label_Status;
+        private System.Windows.Forms.TextBox textBox_IP;
+        private System.Windows.Forms.TextBox textBox_Port;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button_Connect;
     }
 }
 

@@ -19,7 +19,9 @@ namespace Commande_distance_MBE_Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Client = new MBEClient("192.168.56.10", 9000);
+            textBox_IP.Text = "192.168.56.10";
+            textBox_Port.Text = "9000";
+            
         }
 
         private void button_Send_Click(object sender, EventArgs e)
@@ -41,6 +43,19 @@ namespace Commande_distance_MBE_Client
             textBox_Message.Clear();
         }
 
-
+        private void button_Connect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Client = new MBEClient(textBox_IP.Text, Convert.ToInt32(textBox_Port.Text));
+            }
+            catch(Exception ex)
+            {
+                label_Status.Text = "Connection attempt failed";
+            }
+            if (Client.IsConnected)
+                label_Status.Text = "Connected";
+           
+        }
     }
 }
