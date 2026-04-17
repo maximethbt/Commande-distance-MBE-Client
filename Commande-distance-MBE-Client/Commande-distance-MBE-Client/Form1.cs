@@ -11,9 +11,12 @@ namespace Commande_distance_MBE_Client
 {
     public partial class Form1 : Form
     {
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        static extern bool SetProcessDPIAware();
         MBEClient Client;
         public Form1()
         {
+            SetProcessDPIAware();
             InitializeComponent();
         }
 
@@ -24,23 +27,15 @@ namespace Commande_distance_MBE_Client
             
         }
 
-        private void button_Send_Click(object sender, EventArgs e)
+        private void button_Screenshot_Click(object sender, EventArgs e)
         {
-            if (!Client.SendMessage(textBox_Message.Text))
+            Image img = Client.RequestImage();
+            if (img == null)
             {
-                label_Status.Text = "Serveur deconnecte";
+                label_Status.Text = "Erreur de reception";
                 return;
             }
-
-            string reponse = Client.ReadResponse();
-            if (reponse == null)
-            {
-                label_Status.Text = "Serveur deconnecte";
-                return;
-            }
-
-            Label_Response.Text = reponse;
-            textBox_Message.Clear();
+            pictureBox_Screenshot.Image = img;
         }
 
         private void button_Connect_Click(object sender, EventArgs e)

@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.Label_Response = new System.Windows.Forms.Label();
-            this.textBox_Message = new System.Windows.Forms.TextBox();
-            this.button_Send = new System.Windows.Forms.Button();
+            this.button_Screenshot = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label_Status = new System.Windows.Forms.Label();
             this.textBox_IP = new System.Windows.Forms.TextBox();
@@ -39,16 +37,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button_Connect = new System.Windows.Forms.Button();
+            this.pictureBox_Screenshot = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(425, 120);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Response : ";
             // 
             // Label_Response
             // 
@@ -58,27 +49,20 @@
             this.Label_Response.Size = new System.Drawing.Size(0, 16);
             this.Label_Response.TabIndex = 1;
             // 
-            // textBox_Message
+            // button_Screenshot
             // 
-            this.textBox_Message.Location = new System.Drawing.Point(125, 87);
-            this.textBox_Message.Name = "textBox_Message";
-            this.textBox_Message.Size = new System.Drawing.Size(100, 22);
-            this.textBox_Message.TabIndex = 2;
-            // 
-            // button_Send
-            // 
-            this.button_Send.Location = new System.Drawing.Point(125, 136);
-            this.button_Send.Name = "button_Send";
-            this.button_Send.Size = new System.Drawing.Size(75, 23);
-            this.button_Send.TabIndex = 3;
-            this.button_Send.Text = "Send";
-            this.button_Send.UseVisualStyleBackColor = true;
-            this.button_Send.Click += new System.EventHandler(this.button_Send_Click);
+            this.button_Screenshot.Location = new System.Drawing.Point(12, 415);
+            this.button_Screenshot.Name = "button_Screenshot";
+            this.button_Screenshot.Size = new System.Drawing.Size(113, 23);
+            this.button_Screenshot.TabIndex = 3;
+            this.button_Screenshot.Text = "Screenshot";
+            this.button_Screenshot.UseVisualStyleBackColor = true;
+            this.button_Screenshot.Click += new System.EventHandler(this.button_Screenshot_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(296, 120);
+            this.label2.Location = new System.Drawing.Point(22, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 16);
             this.label2.TabIndex = 4;
@@ -87,7 +71,7 @@
             // label_Status
             // 
             this.label_Status.AutoSize = true;
-            this.label_Status.Location = new System.Drawing.Point(296, 173);
+            this.label_Status.Location = new System.Drawing.Point(22, 142);
             this.label_Status.Name = "label_Status";
             this.label_Status.Size = new System.Drawing.Size(0, 16);
             this.label_Status.TabIndex = 5;
@@ -134,11 +118,21 @@
             this.button_Connect.UseVisualStyleBackColor = true;
             this.button_Connect.Click += new System.EventHandler(this.button_Connect_Click);
             // 
+            // pictureBox_Screenshot
+            // 
+            this.pictureBox_Screenshot.Location = new System.Drawing.Point(120, 2);
+            this.pictureBox_Screenshot.Name = "pictureBox_Screenshot";
+            this.pictureBox_Screenshot.Size = new System.Drawing.Size(682, 449);
+            this.pictureBox_Screenshot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Screenshot.TabIndex = 11;
+            this.pictureBox_Screenshot.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox_Screenshot);
             this.Controls.Add(this.button_Connect);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -146,24 +140,20 @@
             this.Controls.Add(this.textBox_IP);
             this.Controls.Add(this.label_Status);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button_Send);
-            this.Controls.Add(this.textBox_Message);
+            this.Controls.Add(this.button_Screenshot);
             this.Controls.Add(this.Label_Response);
-            this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Label_Response;
-        private System.Windows.Forms.TextBox textBox_Message;
-        private System.Windows.Forms.Button button_Send;
+        private System.Windows.Forms.Button button_Screenshot;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label_Status;
         private System.Windows.Forms.TextBox textBox_IP;
@@ -171,6 +161,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button_Connect;
+        private System.Windows.Forms.PictureBox pictureBox_Screenshot;
     }
 }
 

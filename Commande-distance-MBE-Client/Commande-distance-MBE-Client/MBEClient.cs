@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -43,6 +45,37 @@ namespace Commande_distance_MBE_Client
             }
         }
 
+        public Image RequestImage()
+        {
+            try
+            {
+                stream.WriteByte(0x01);
+                byte[] sizeBytes = new byte[4];
+                stream.Read(sizeBytes, 0, 4);
+                int size = BitConverter.ToInt32(sizeBytes, 0);
+
+                // Lire l'image
+                byte[] imageBytes = new byte[size];
+                int total = 0;
+                while (total < size)
+                {
+                    int n = stream.Read(imageBytes, total, size - total);
+                    if (n == 0) break;
+                    total += n;
+                }
+
+                // Afficher
+                MemoryStream ms = new MemoryStream(imageBytes);
+                Image img = Image.FromStream(ms);
+                return img;
+            }
+            catch
+            {
+                return null;
+            }
+            
+        }
+
         public string ReadResponse()
         {
             try
@@ -56,6 +89,7 @@ namespace Commande_distance_MBE_Client
                 return null;
             }
         }
+
 
         public void Close()
         {
