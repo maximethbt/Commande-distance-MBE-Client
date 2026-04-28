@@ -5,12 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Commande_distance_MBE_Client
 {
+    
     public partial class Form1 : Form
     {
+        Image img;
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         static extern bool SetProcessDPIAware();
         MBEClient Client;
@@ -29,13 +32,36 @@ namespace Commande_distance_MBE_Client
 
         private void button_Screenshot_Click(object sender, EventArgs e)
         {
-            Image img = Client.RequestImage();
-            if (img == null)
+            Thread t = new Thread(() =>
             {
-                label_Status.Text = "Erreur de reception";
-                return;
-            }
-            pictureBox_Screenshot.Image = img;
+                System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                while (true)
+                {
+                    sw.Reset();
+                    sw.Start();
+                    Image frame = Client.RequestImage();
+                    sw.Stop();
+                    long networkMs = sw.ElapsedMilliseconds;
+                    if (frame == null) break;
+
+                    sw.Reset();
+                    sw.Start();
+                    this.Invoke(new Action(() =>
+                    {
+                        if (pictureBox_Screenshot.Image != null)
+                            pictureBox_Screenshot.Image.Dispose();
+                        pictureBox_Screenshot.Image = frame;
+                    }));
+                    sw.Stop();
+                    long uiMs = sw.ElapsedMilliseconds;
+
+                    System.Diagnostics.Debug.WriteLine(
+                        "Network: " + networkMs + "ms | UI: " + uiMs + "ms");
+
+                }
+            });
+            t.IsBackground = true;
+            t.Start();
         }
 
         private void button_Connect_Click(object sender, EventArgs e)
@@ -52,5 +78,6 @@ namespace Commande_distance_MBE_Client
                 label_Status.Text = "Connected";
            
         }
+
     }
 }

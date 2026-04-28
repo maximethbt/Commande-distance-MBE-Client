@@ -120,6 +120,9 @@
             // 
             // pictureBox_Screenshot
             // 
+            this.pictureBox_Screenshot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_Screenshot.Location = new System.Drawing.Point(120, 2);
             this.pictureBox_Screenshot.Name = "pictureBox_Screenshot";
             this.pictureBox_Screenshot.Size = new System.Drawing.Size(682, 449);
