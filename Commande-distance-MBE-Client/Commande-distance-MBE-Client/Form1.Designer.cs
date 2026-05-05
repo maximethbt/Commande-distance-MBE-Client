@@ -71,7 +71,7 @@
             // label_Status
             // 
             this.label_Status.AutoSize = true;
-            this.label_Status.Location = new System.Drawing.Point(22, 142);
+            this.label_Status.Location = new System.Drawing.Point(9, 141);
             this.label_Status.Name = "label_Status";
             this.label_Status.Size = new System.Drawing.Size(0, 16);
             this.label_Status.TabIndex = 5;
@@ -123,9 +123,9 @@
             this.pictureBox_Screenshot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_Screenshot.Location = new System.Drawing.Point(120, 2);
+            this.pictureBox_Screenshot.Location = new System.Drawing.Point(235, 2);
             this.pictureBox_Screenshot.Name = "pictureBox_Screenshot";
-            this.pictureBox_Screenshot.Size = new System.Drawing.Size(682, 449);
+            this.pictureBox_Screenshot.Size = new System.Drawing.Size(857, 449);
             this.pictureBox_Screenshot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_Screenshot.TabIndex = 11;
             this.pictureBox_Screenshot.TabStop = false;
@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1139, 450);
             this.Controls.Add(this.pictureBox_Screenshot);
             this.Controls.Add(this.button_Connect);
             this.Controls.Add(this.label4);

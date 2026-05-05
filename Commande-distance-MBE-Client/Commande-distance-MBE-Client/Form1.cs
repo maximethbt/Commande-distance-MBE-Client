@@ -45,18 +45,20 @@ namespace Commande_distance_MBE_Client
                     if (frame == null) break;
 
                     sw.Reset();
-                    sw.Start();
-                    this.Invoke(new Action(() =>
+                    
+                    this.BeginInvoke(new Action(() =>
                     {
+                        sw.Start();
                         if (pictureBox_Screenshot.Image != null)
                             pictureBox_Screenshot.Image.Dispose();
                         pictureBox_Screenshot.Image = frame;
-                    }));
-                    sw.Stop();
-                    long uiMs = sw.ElapsedMilliseconds;
-
-                    System.Diagnostics.Debug.WriteLine(
+                        sw.Stop();
+                        long uiMs = sw.ElapsedMilliseconds;
+                        label_Status.Text = (
                         "Network: " + networkMs + "ms | UI: " + uiMs + "ms");
+                    }));
+
+                    
 
                 }
             });
