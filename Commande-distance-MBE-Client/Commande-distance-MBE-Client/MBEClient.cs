@@ -13,7 +13,7 @@ namespace Commande_distance_MBE_Client
         private NetworkStream stream;
         private TcpClient client;
         private byte[] buffer = new byte[1024];
-        public bool IsConnected { get; private set; }
+        public bool IsConnected { get; private set; } = false;
         public MBEClient(string IP, int Port)
         {
             client = new TcpClient();
@@ -87,6 +87,23 @@ namespace Commande_distance_MBE_Client
             catch
             {
                 return null;
+            }
+        }
+
+        public bool SendMouseMove(int x, int y)
+        {
+            try
+            {
+                byte[] buf = new byte[9];
+                buf[0] = 0x02;
+                Buffer.BlockCopy(BitConverter.GetBytes(x), 0, buf, 1, 4);
+                Buffer.BlockCopy(BitConverter.GetBytes(y), 0, buf, 5, 4);
+                stream.Write(buf, 0, 9);
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
 

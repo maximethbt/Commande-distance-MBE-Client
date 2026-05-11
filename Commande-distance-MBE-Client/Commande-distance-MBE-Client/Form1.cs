@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Commande_distance_MBE_Client
 {
-    
+
     public partial class Form1 : Form
     {
         Image img;
@@ -27,7 +27,7 @@ namespace Commande_distance_MBE_Client
         {
             textBox_IP.Text = "192.168.56.10";
             textBox_Port.Text = "9000";
-            
+
         }
 
         private void button_Screenshot_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace Commande_distance_MBE_Client
                     if (frame == null) break;
 
                     sw.Reset();
-                    
+
                     this.BeginInvoke(new Action(() =>
                     {
                         sw.Start();
@@ -58,7 +58,7 @@ namespace Commande_distance_MBE_Client
                         "Network: " + networkMs + "ms | UI: " + uiMs + "ms");
                     }));
 
-                    
+
 
                 }
             });
@@ -72,14 +72,21 @@ namespace Commande_distance_MBE_Client
             {
                 Client = new MBEClient(textBox_IP.Text, Convert.ToInt32(textBox_Port.Text));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 label_Status.Text = "Connection attempt failed";
             }
             if (Client.IsConnected)
                 label_Status.Text = "Connected";
-           
+
         }
 
+        private void pictureBox_Screenshot_MouseMove(object sender, MouseEventArgs e)
+        {
+            int RealPosX = (e.X * 1680) / pictureBox_Screenshot.Width;
+            int RealPosY = (e.Y * 1050) / pictureBox_Screenshot.Height;
+            if (Client != null && Client.IsConnected)
+                Client.SendMouseMove(RealPosX, RealPosY);
+        }
     }
 }
