@@ -21,6 +21,7 @@ namespace Commande_distance_MBE_Client
             try
             {
                 client.Connect(IP, Port);
+                client.NoDelay = true;
                 stream = client.GetStream();
                 IsConnected = true;
             }

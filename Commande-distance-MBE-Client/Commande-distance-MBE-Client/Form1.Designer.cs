@@ -124,9 +124,9 @@
             // 
             // pictureBox_Screenshot
             // 
-            this.pictureBox_Screenshot.Location = new System.Drawing.Point(116, 70);
+            this.pictureBox_Screenshot.Location = new System.Drawing.Point(0, 0);
             this.pictureBox_Screenshot.Name = "pictureBox_Screenshot";
-            this.pictureBox_Screenshot.Size = new System.Drawing.Size(601, 329);
+            this.pictureBox_Screenshot.Size = new System.Drawing.Size(928, 450);
             this.pictureBox_Screenshot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_Screenshot.TabIndex = 11;
             this.pictureBox_Screenshot.TabStop = false;
@@ -152,6 +152,7 @@
             // splitContainerMain.Panel2
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.pictureBox_Screenshot);
+            this.splitContainerMain.Panel2.SizeChanged += new System.EventHandler(this.splitContainerMain_Panel2_SizeChanged);
             this.splitContainerMain.Size = new System.Drawing.Size(1139, 450);
             this.splitContainerMain.SplitterDistance = 207;
             this.splitContainerMain.TabIndex = 12;
