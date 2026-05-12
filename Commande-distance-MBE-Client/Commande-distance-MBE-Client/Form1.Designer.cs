@@ -127,10 +127,12 @@
             this.pictureBox_Screenshot.Location = new System.Drawing.Point(0, 0);
             this.pictureBox_Screenshot.Name = "pictureBox_Screenshot";
             this.pictureBox_Screenshot.Size = new System.Drawing.Size(928, 450);
-            this.pictureBox_Screenshot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Screenshot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_Screenshot.TabIndex = 11;
             this.pictureBox_Screenshot.TabStop = false;
+            this.pictureBox_Screenshot.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Screenshot_MouseDown);
             this.pictureBox_Screenshot.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Screenshot_MouseMove);
+            this.pictureBox_Screenshot.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Screenshot_MouseUp);
             // 
             // splitContainerMain
             // 
@@ -167,6 +169,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot)).EndInit();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel1.PerformLayout();

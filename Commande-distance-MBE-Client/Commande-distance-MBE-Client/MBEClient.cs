@@ -108,6 +108,89 @@ namespace Commande_distance_MBE_Client
             }
         }
 
+        public bool SendClick(bool PressorRelease, int button)
+        {
+            try
+            {
+                if (PressorRelease)
+                {
+                    switch (button)
+                    {
+                        case 1:
+                            stream.WriteByte(0x10);
+                            break;
+
+                        case 2:
+                            stream.WriteByte(0x11);
+                            break;
+
+                        case 3:
+                            stream.WriteByte(0x12);
+                            break;
+
+                    }
+                }
+                else
+                {
+                    switch (button)
+                    {
+                        case 1:
+                            stream.WriteByte(0x20);
+                            break;
+
+                        case 2:
+                            stream.WriteByte(0x21);
+                            break;
+
+                        case 3:
+                            stream.WriteByte(0x22);
+                            break;
+
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public bool SendKey(bool PressedorReleased, int Keycode)
+        {
+            if(PressedorReleased)
+            {
+                try
+                {
+                    byte[] buf = new byte[5];
+                    buf[0] = 0x30;
+                    Buffer.BlockCopy(BitConverter.GetBytes(Keycode), 0, buf, 1, 4);
+                    stream.Write(buf, 0, 5);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                try
+                {
+                    byte[] buf = new byte[5];
+                    buf[0] = 0x40;
+                    Buffer.BlockCopy(BitConverter.GetBytes(Keycode), 0, buf, 1, 4);
+                    stream.Write(buf, 0, 5);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
 
         public void Close()
         {
