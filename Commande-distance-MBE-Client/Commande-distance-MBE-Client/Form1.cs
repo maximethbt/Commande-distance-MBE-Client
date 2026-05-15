@@ -30,24 +30,30 @@ namespace Commande_distance_MBE_Client
 
             textBox_Port.Text = "9000";
             this.KeyPreview = true;
+            comboBox_Ecrans.SelectedIndex = 0;
 
         }
 
         private void button_Screenshot_Click(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+            int Ecran = 1;
             Thread t = new Thread(() =>
             {
                 while (true)
                 {
-                    Image img = Client.RequestImage();
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        Ecran = Convert.ToInt32(comboBox_Ecrans.SelectedItem);
+                    }));
+
+                    Image img = Client.RequestImage(Ecran);
                     if (img == null) break;
                     this.BeginInvoke(new Action(() =>
                     {
                         if (pictureBox_Screenshot.Image != null)
                             pictureBox_Screenshot.Image.Dispose();
                         pictureBox_Screenshot.Image = img;
-                        //label_Status.Text = img.Width + " x " + img.Height;
                     }));
                 }
             });

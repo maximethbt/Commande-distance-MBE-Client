@@ -39,6 +39,8 @@
             this.button_Connect = new System.Windows.Forms.Button();
             this.pictureBox_Screenshot = new System.Windows.Forms.PictureBox();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox_Ecrans = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -55,7 +57,7 @@
             // 
             // button_Screenshot
             // 
-            this.button_Screenshot.Location = new System.Drawing.Point(48, 373);
+            this.button_Screenshot.Location = new System.Drawing.Point(38, 252);
             this.button_Screenshot.Name = "button_Screenshot";
             this.button_Screenshot.Size = new System.Drawing.Size(113, 23);
             this.button_Screenshot.TabIndex = 3;
@@ -66,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 47);
+            this.label2.Location = new System.Drawing.Point(60, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 16);
             this.label2.TabIndex = 4;
@@ -75,21 +77,21 @@
             // label_Status
             // 
             this.label_Status.AutoSize = true;
-            this.label_Status.Location = new System.Drawing.Point(45, 99);
+            this.label_Status.Location = new System.Drawing.Point(47, 61);
             this.label_Status.Name = "label_Status";
             this.label_Status.Size = new System.Drawing.Size(0, 16);
             this.label_Status.TabIndex = 5;
             // 
             // textBox_IP
             // 
-            this.textBox_IP.Location = new System.Drawing.Point(48, 196);
+            this.textBox_IP.Location = new System.Drawing.Point(38, 58);
             this.textBox_IP.Name = "textBox_IP";
             this.textBox_IP.Size = new System.Drawing.Size(100, 22);
             this.textBox_IP.TabIndex = 6;
             // 
             // textBox_Port
             // 
-            this.textBox_Port.Location = new System.Drawing.Point(48, 261);
+            this.textBox_Port.Location = new System.Drawing.Point(38, 123);
             this.textBox_Port.Name = "textBox_Port";
             this.textBox_Port.Size = new System.Drawing.Size(100, 22);
             this.textBox_Port.TabIndex = 7;
@@ -97,7 +99,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 177);
+            this.label3.Location = new System.Drawing.Point(38, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(19, 16);
             this.label3.TabIndex = 8;
@@ -106,7 +108,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 242);
+            this.label4.Location = new System.Drawing.Point(38, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 16);
             this.label4.TabIndex = 9;
@@ -114,7 +116,7 @@
             // 
             // button_Connect
             // 
-            this.button_Connect.Location = new System.Drawing.Point(61, 311);
+            this.button_Connect.Location = new System.Drawing.Point(51, 173);
             this.button_Connect.Name = "button_Connect";
             this.button_Connect.Size = new System.Drawing.Size(75, 23);
             this.button_Connect.TabIndex = 10;
@@ -142,6 +144,8 @@
             // 
             // splitContainerMain.Panel1
             // 
+            this.splitContainerMain.Panel1.Controls.Add(this.comboBox_Ecrans);
+            this.splitContainerMain.Panel1.Controls.Add(this.label1);
             this.splitContainerMain.Panel1.Controls.Add(this.textBox_IP);
             this.splitContainerMain.Panel1.Controls.Add(this.button_Screenshot);
             this.splitContainerMain.Panel1.Controls.Add(this.button_Connect);
@@ -156,8 +160,28 @@
             this.splitContainerMain.Panel2.Controls.Add(this.pictureBox_Screenshot);
             this.splitContainerMain.Panel2.SizeChanged += new System.EventHandler(this.splitContainerMain_Panel2_SizeChanged);
             this.splitContainerMain.Size = new System.Drawing.Size(1139, 450);
-            this.splitContainerMain.SplitterDistance = 207;
+            this.splitContainerMain.SplitterDistance = 208;
             this.splitContainerMain.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(38, 287);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 16);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Ecran";
+            // 
+            // comboBox_Ecrans
+            // 
+            this.comboBox_Ecrans.FormattingEnabled = true;
+            this.comboBox_Ecrans.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.comboBox_Ecrans.Location = new System.Drawing.Point(38, 307);
+            this.comboBox_Ecrans.Name = "comboBox_Ecrans";
+            this.comboBox_Ecrans.Size = new System.Drawing.Size(121, 24);
+            this.comboBox_Ecrans.TabIndex = 12;
             // 
             // Form1
             // 
@@ -193,6 +217,8 @@
         private System.Windows.Forms.Button button_Connect;
         private System.Windows.Forms.PictureBox pictureBox_Screenshot;
         private System.Windows.Forms.SplitContainer splitContainerMain;
+        private System.Windows.Forms.ComboBox comboBox_Ecrans;
+        private System.Windows.Forms.Label label1;
     }
 }
 

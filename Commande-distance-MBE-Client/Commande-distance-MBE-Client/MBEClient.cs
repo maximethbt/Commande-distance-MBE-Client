@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace Commande_distance_MBE_Client
 {
@@ -46,11 +47,15 @@ namespace Commande_distance_MBE_Client
             }
         }
 
-        public Image RequestImage()
+        public Image RequestImage(int screen)
         {
             try
             {
-                stream.WriteByte(0x01);
+                byte[] buf = new byte[5];
+                buf[0] = 0x01;
+                Buffer.BlockCopy(BitConverter.GetBytes(screen), 0, buf, 1, 4);
+                stream.Write(buf, 0, 5);
+
                 byte[] sizeBytes = new byte[4];
                 stream.Read(sizeBytes, 0, 4);
                 int size = BitConverter.ToInt32(sizeBytes, 0);
