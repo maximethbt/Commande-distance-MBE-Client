@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.Label_Response = new System.Windows.Forms.Label();
-            this.button_Screenshot = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label_Status = new System.Windows.Forms.Label();
             this.textBox_IP = new System.Windows.Forms.TextBox();
@@ -39,8 +38,9 @@
             this.button_Connect = new System.Windows.Forms.Button();
             this.pictureBox_Screenshot = new System.Windows.Forms.PictureBox();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
             this.comboBox_Ecrans = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_DossierReception = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Screenshot)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -55,16 +55,6 @@
             this.Label_Response.Size = new System.Drawing.Size(0, 16);
             this.Label_Response.TabIndex = 1;
             // 
-            // button_Screenshot
-            // 
-            this.button_Screenshot.Location = new System.Drawing.Point(38, 252);
-            this.button_Screenshot.Name = "button_Screenshot";
-            this.button_Screenshot.Size = new System.Drawing.Size(113, 23);
-            this.button_Screenshot.TabIndex = 3;
-            this.button_Screenshot.Text = "Screenshot";
-            this.button_Screenshot.UseVisualStyleBackColor = true;
-            this.button_Screenshot.Click += new System.EventHandler(this.button_Screenshot_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -77,7 +67,7 @@
             // label_Status
             // 
             this.label_Status.AutoSize = true;
-            this.label_Status.Location = new System.Drawing.Point(47, 61);
+            this.label_Status.Location = new System.Drawing.Point(119, 9);
             this.label_Status.Name = "label_Status";
             this.label_Status.Size = new System.Drawing.Size(0, 16);
             this.label_Status.TabIndex = 5;
@@ -128,7 +118,7 @@
             // 
             this.pictureBox_Screenshot.Location = new System.Drawing.Point(0, 0);
             this.pictureBox_Screenshot.Name = "pictureBox_Screenshot";
-            this.pictureBox_Screenshot.Size = new System.Drawing.Size(928, 450);
+            this.pictureBox_Screenshot.Size = new System.Drawing.Size(903, 425);
             this.pictureBox_Screenshot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_Screenshot.TabIndex = 11;
             this.pictureBox_Screenshot.TabStop = false;
@@ -144,10 +134,10 @@
             // 
             // splitContainerMain.Panel1
             // 
+            this.splitContainerMain.Panel1.Controls.Add(this.button_DossierReception);
             this.splitContainerMain.Panel1.Controls.Add(this.comboBox_Ecrans);
             this.splitContainerMain.Panel1.Controls.Add(this.label1);
             this.splitContainerMain.Panel1.Controls.Add(this.textBox_IP);
-            this.splitContainerMain.Panel1.Controls.Add(this.button_Screenshot);
             this.splitContainerMain.Panel1.Controls.Add(this.button_Connect);
             this.splitContainerMain.Panel1.Controls.Add(this.label2);
             this.splitContainerMain.Panel1.Controls.Add(this.label4);
@@ -163,25 +153,35 @@
             this.splitContainerMain.SplitterDistance = 208;
             this.splitContainerMain.TabIndex = 12;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 287);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 16);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Ecran";
-            // 
             // comboBox_Ecrans
             // 
             this.comboBox_Ecrans.FormattingEnabled = true;
             this.comboBox_Ecrans.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.comboBox_Ecrans.Location = new System.Drawing.Point(38, 307);
+            this.comboBox_Ecrans.Location = new System.Drawing.Point(38, 242);
             this.comboBox_Ecrans.Name = "comboBox_Ecrans";
             this.comboBox_Ecrans.Size = new System.Drawing.Size(121, 24);
             this.comboBox_Ecrans.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 223);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 16);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Ecran";
+            // 
+            // button_DossierReception
+            // 
+            this.button_DossierReception.Location = new System.Drawing.Point(41, 354);
+            this.button_DossierReception.Name = "button_DossierReception";
+            this.button_DossierReception.Size = new System.Drawing.Size(107, 42);
+            this.button_DossierReception.TabIndex = 13;
+            this.button_DossierReception.Text = "Select receiving file";
+            this.button_DossierReception.UseVisualStyleBackColor = true;
+            this.button_DossierReception.Click += new System.EventHandler(this.button_DossierReception_Click);
             // 
             // Form1
             // 
@@ -207,7 +207,6 @@
 
         #endregion
         private System.Windows.Forms.Label Label_Response;
-        private System.Windows.Forms.Button button_Screenshot;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label_Status;
         private System.Windows.Forms.TextBox textBox_IP;
@@ -219,6 +218,7 @@
         private System.Windows.Forms.SplitContainer splitContainerMain;
         private System.Windows.Forms.ComboBox comboBox_Ecrans;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button_DossierReception;
     }
 }
 

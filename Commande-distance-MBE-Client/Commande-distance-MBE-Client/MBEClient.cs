@@ -15,6 +15,7 @@ namespace Commande_distance_MBE_Client
         private TcpClient client;
         private byte[] buffer = new byte[1024];
         public bool IsConnected { get; private set; } = false;
+
         public MBEClient(string IP, int Port)
         {
             client = new TcpClient();
@@ -30,7 +31,6 @@ namespace Commande_distance_MBE_Client
             {
                 IsConnected = false;
             }
-            
         }
 
         public bool SendMessage(string Message)
@@ -79,7 +79,6 @@ namespace Commande_distance_MBE_Client
             {
                 return null;
             }
-            
         }
 
         public string ReadResponse()
@@ -132,7 +131,6 @@ namespace Commande_distance_MBE_Client
                         case 3:
                             stream.WriteByte(0x12);
                             break;
-
                     }
                 }
                 else
@@ -150,7 +148,6 @@ namespace Commande_distance_MBE_Client
                         case 3:
                             stream.WriteByte(0x22);
                             break;
-
                     }
                 }
                 return true;
@@ -159,12 +156,11 @@ namespace Commande_distance_MBE_Client
             {
                 return false;
             }
-
         }
 
         public bool SendKey(bool PressedorReleased, int Keycode)
         {
-            if(PressedorReleased)
+            if (PressedorReleased)
             {
                 try
                 {
@@ -196,12 +192,44 @@ namespace Commande_distance_MBE_Client
             }
         }
 
+        // === Demande au serveur s'il a un fichier à envoyer ===
+        public string PollFile(string receptionFolder)
+        {
+            try
+            {
+                stream.WriteByte(0x03);
+                int flag = stream.ReadByte();
+                if (flag <= 0) return null;                          // 0 = rien, -1 = déconnecté
+
+                int nameLen = BitConverter.ToInt32(ReadExact(4), 0);
+                string name = Encoding.UTF8.GetString(ReadExact(nameLen));
+                int size = BitConverter.ToInt32(ReadExact(4), 0);
+                byte[] fileBytes = ReadExact(size);
+
+                string dest = Path.Combine(receptionFolder, Path.GetFileName(name));
+                File.WriteAllBytes(dest, fileBytes);
+                return dest;
+            }
+            catch { return null; }
+        }
+
+        private byte[] ReadExact(int n)
+        {
+            byte[] buf = new byte[n];
+            int total = 0;
+            while (total < n)
+            {
+                int r = stream.Read(buf, total, n - total);
+                if (r <= 0) throw new Exception("Disconnected");
+                total += r;
+            }
+            return buf;
+        }
 
         public void Close()
         {
             if (stream != null) stream.Close();
             if (client != null) client.Close();
         }
-
     }
 }

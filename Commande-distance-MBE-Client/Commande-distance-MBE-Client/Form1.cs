@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -11,12 +12,14 @@ using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace Commande_distance_MBE_Client
 {
-
     public partial class Form1 : Form
     {
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         static extern bool SetProcessDPIAware();
         MBEClient Client;
+
+        string receptionFolder;
+
         public Form1()
         {
             SetProcessDPIAware();
@@ -32,11 +35,33 @@ namespace Commande_distance_MBE_Client
             this.KeyPreview = true;
             comboBox_Ecrans.SelectedIndex = 0;
 
+            receptionFolder = Path.Combine(Application.StartupPath, "Reception");
+            Directory.CreateDirectory(receptionFolder);
         }
 
         private void button_Screenshot_Click(object sender, EventArgs e)
         {
-            this.ActiveControl = null;
+
+        }
+
+        private void button_Connect_Click(object sender, EventArgs e)
+        {
+            if (Client != null)
+            {
+                Client.Close();
+                Client = null;
+            }
+            try
+            {
+                Client = new MBEClient(textBox_IP.Text, Convert.ToInt32(textBox_Port.Text));
+            }
+            catch (Exception ex)
+            {
+                label_Status.Text = "Connection attempt failed";
+            }
+            if (Client.IsConnected)
+                label_Status.Text = "Connected";
+            this.ActiveControl = null; // désélectionne tous les boutons
             int Ecran = 1;
             Thread t = new Thread(() =>
             {
@@ -55,25 +80,15 @@ namespace Commande_distance_MBE_Client
                             pictureBox_Screenshot.Image.Dispose();
                         pictureBox_Screenshot.Image = img;
                     }));
+
+                    string recu = Client.PollFile(receptionFolder);
+                    if (recu != null)
+                        this.BeginInvoke(new Action(() =>
+                            label_Status.Text = "Fichier reçu : " + Path.GetFileName(recu)));
                 }
             });
             t.IsBackground = true;
             t.Start();
-        }
-
-        private void button_Connect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Client = new MBEClient(textBox_IP.Text, Convert.ToInt32(textBox_Port.Text));
-            }
-            catch (Exception ex)
-            {
-                label_Status.Text = "Connection attempt failed";
-            }
-            if (Client.IsConnected)
-                label_Status.Text = "Connected";
-
         }
 
         private void pictureBox_Screenshot_MouseMove(object sender, MouseEventArgs e)
@@ -96,7 +111,6 @@ namespace Commande_distance_MBE_Client
 
                 if (RatioImage >= RatioPanel)
                     Ratio = (float)splitContainerMain.Panel2.Width / pictureBox_Screenshot.Image.Width;
-
                 else
                     Ratio = (float)splitContainerMain.Panel2.Height / pictureBox_Screenshot.Image.Height;
 
@@ -105,15 +119,11 @@ namespace Commande_distance_MBE_Client
 
                 pictureBox_Screenshot.Left = (splitContainerMain.Panel2.Width - pictureBox_Screenshot.Width) / 2;
                 pictureBox_Screenshot.Top = (splitContainerMain.Panel2.Height - pictureBox_Screenshot.Height) / 2;
-
-
-
             }
         }
 
         private void pictureBox_Screenshot_MouseDown(object sender, MouseEventArgs e)
         {
-
             if (Client == null || !Client.IsConnected) return;
             if (e.Button == MouseButtons.Left)
             {
@@ -155,6 +165,19 @@ namespace Commande_distance_MBE_Client
                 Client.SendKey(false, keyCode);
             e.Handled = true;
             e.SuppressKeyPress = true;
+        }
+
+        private void button_DossierReception_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+            {
+                dlg.Description = "Choisir le dossier de réception";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    receptionFolder = dlg.SelectedPath;
+                    label_Status.Text = "Réception : " + receptionFolder;
+                }
+            }
         }
     }
 }
